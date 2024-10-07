@@ -4,6 +4,7 @@ import { MantineProvider, ColorSchemeScript } from "@mantine/core";
 import { theme } from "../theme";
 import "./globals.css";
 import { HeaderMenu } from "./components/HeaderMenu/HeaderMenu";
+import { FooterSimple } from "./components/Footer/FooterSimple";
 
 export const metadata = {
   title: "Mantine Next.js template",
@@ -23,8 +24,15 @@ export default function RootLayout({ children }: { children: any }) {
       </head>
       <body>
         <MantineProvider theme={theme} defaultColorScheme="dark">
-          <HeaderMenu/>  
+          <section>
+            <HeaderMenu />
+          </section>
           {children}
+
+          {/* Footer Section */}
+          <section>
+            <FooterSimple />
+          </section>
         </MantineProvider>
       </body>
     </html>

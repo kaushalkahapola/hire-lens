@@ -1,3 +1,5 @@
+// app/api/screen/route.ts
+
 import { NextRequest, NextResponse } from 'next/server';
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL;
@@ -5,7 +7,14 @@ const API_URL = process.env.NEXT_PUBLIC_API_URL;
 export async function POST(request: NextRequest) {
   try {
     const formData = await request.formData();
-    
+    const title = formData.get('title');
+    const skills = formData.get('skills');
+    const description = formData.get('description');
+
+    if (!title || !skills || !description ) {
+      return NextResponse.json({ error: 'All fields are required' }, { status: 400 });
+    }
+
     // Assuming your backend is running on http://localhost:8000
     const response = await fetch(`${API_URL}/upload_resume/`, {
       method: 'POST',
