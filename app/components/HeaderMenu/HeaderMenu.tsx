@@ -4,6 +4,7 @@ import { Menu, Group, Center, Burger, Container } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
 import { IconChevronDown } from '@tabler/icons-react';
 import classes from './HeaderMenu.module.css';
+import Link from 'next/link';
 
 const links = [
   { link: '/#hero', label: 'Home' },        // Link to Hero Section
@@ -32,7 +33,7 @@ export function HeaderMenu() {
       <Container size="xl">
         <div className={classes.inner}>
           <div className="text-2xl font-bold">
-            Hire<span className="text-blue-500">Lens</span>
+            <Link href="/">Hire<span className="text-blue-500">Lens</span></Link>
           </div>
           <Group gap={5} visibleFrom="sm">
             {items}
