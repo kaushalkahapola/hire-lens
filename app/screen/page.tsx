@@ -44,9 +44,6 @@ export default function ScreenPage() {
     // Make the API call
     try {
       const response = await fetch("/api/screen", {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
         method: "POST",
         body: formData,
       });

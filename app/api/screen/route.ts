@@ -17,6 +17,9 @@ export async function POST(request: NextRequest) {
 
     // Assuming your backend is running on http://localhost:8000
     const response = await fetch(`${API_URL}/upload_resume/`, {
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
       method: 'POST',
       body: formData,
     });
