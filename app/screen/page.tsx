@@ -43,13 +43,6 @@ export default function ScreenPage() {
     formData.append("skills", jobDetails.skills);
     formData.append("description", jobDetails.description);
 
-    // test the api
-    const responseTest = await fetch(`${API_URL}`, {
-      method: "GET",
-    });
-
-    console.log(await responseTest.json());
-
     // Make the API call
     try {
       const response = await fetch("/api/screen", {
