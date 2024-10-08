@@ -18,7 +18,7 @@ export async function POST(request: NextRequest) {
     console.log(formData);
 
     // Assuming your backend is running on http://localhost:8000
-    const response = await fetch(`${API_URL}/upload_resume/`, {
+    const response = await fetch(`${API_URL}/upload_resume`, {
       method: 'POST',
       body: formData,
     });
