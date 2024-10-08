@@ -30,6 +30,7 @@ Before you begin, ensure you have the following installed:
 
    ```
    git clone https://github.com/kaushalkahapola/hire-lens.git
+   cd hire-lens
    ```
 
 2. Install the required packages:
