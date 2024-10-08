@@ -1,6 +1,7 @@
 import { Title, Text, Button, Container } from '@mantine/core';
 import { Dots } from './Dots'
 import classes from './HeroText.module.css';
+import Link from 'next/link';
 
 export function HeroText() {
   return (
@@ -25,13 +26,13 @@ export function HeroText() {
           </Text>
         </Container>
 
-        <div className={classes.controls}>
+        <div className={`${classes.controls} space-x-4`}>
           <Button className={classes.control} size="lg" variant="default" color="gray">
             How it works
           </Button>
-          <Button className={classes.control} size="lg">
+          <Link href="/screen"><Button className={classes.control} size="lg">
             Start Screening
-          </Button>
+          </Button></Link>
         </div>
       </div>
     </Container>

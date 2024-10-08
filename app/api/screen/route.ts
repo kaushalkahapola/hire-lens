@@ -15,8 +15,10 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: 'All fields are required' }, { status: 400 });
     }
 
+    console.log(formData);
+
     // Assuming your backend is running on http://localhost:8000
-    const response = await fetch(`${API_URL}/upload_resume`, {
+    const response = await fetch(`${API_URL}/upload_resume/`, {
       method: 'POST',
       body: formData,
     });

@@ -43,7 +43,7 @@ export default function ScreenPage() {
 
     // Make the API call
     try {
-      const response = await fetch("/api/screen", {
+      const response = await fetch("/api/screen/", {
         method: "POST",
         body: formData,
       });
