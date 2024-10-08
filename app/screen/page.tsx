@@ -7,6 +7,8 @@ import JobDescription from "../components/ScreenPage/JobDescription/JobDescripti
 import { CVResults } from "../components/ScreenPage/CVResuts/CVResults";
 import { Button, LoadingOverlay } from "@mantine/core";
 
+const API_URL = process.env.NEXT_PUBLIC_API_URL;
+
 export default function ScreenPage() {
   const [uploadedFiles, setUploadedFiles] = useState<FileWithPath[]>([]);
   const [jobDetails, setJobDetails] = useState<any>({});
@@ -40,6 +42,13 @@ export default function ScreenPage() {
     formData.append("title", jobDetails.title);
     formData.append("skills", jobDetails.skills);
     formData.append("description", jobDetails.description);
+
+    // test the api
+    const responseTest = await fetch(`${API_URL}`, {
+      method: "GET",
+    });
+
+    console.log(await responseTest.json());
 
     // Make the API call
     try {
