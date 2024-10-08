@@ -7,8 +7,6 @@ import JobDescription from "../components/ScreenPage/JobDescription/JobDescripti
 import { CVResults } from "../components/ScreenPage/CVResuts/CVResults";
 import { Button, LoadingOverlay } from "@mantine/core";
 
-const API_URL = process.env.NEXT_PUBLIC_API_URL;
-
 export default function ScreenPage() {
   const [uploadedFiles, setUploadedFiles] = useState<FileWithPath[]>([]);
   const [jobDetails, setJobDetails] = useState<any>({});
@@ -18,13 +16,11 @@ export default function ScreenPage() {
   // Function to update files when dropped/uploaded
   const handleFilesChange = (files: FileWithPath[]) => {
     setUploadedFiles(files);
-    console.log("Files ready for upload:", files);
   };
 
   // Function to update job details when inputs change
   const handleJobDetailsChange = (details: any) => {
-    setJobDetails(details);
-    console.log("Job Details updated:", details);
+    setJobDetails(details)
   };
 
   // Updated handleSubmit function
@@ -51,10 +47,8 @@ export default function ScreenPage() {
       });
 
       const result = await response.json();
-      console.log("Form submitted with files and job details:", result);
       setResults(result.similarity_scores);
     } catch (error) {
-      console.error("Error submitting form:", error);
     } finally {
       setIsLoading(false);
     }

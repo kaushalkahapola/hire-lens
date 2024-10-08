@@ -21,6 +21,24 @@ function JobDescription({ onJobDetailsChange }: JobDescriptionProps) {
     });
   };
 
+  const handlePaste = (
+    event: React.ClipboardEvent<HTMLInputElement | HTMLTextAreaElement>,
+    setter: React.Dispatch<React.SetStateAction<string>>
+  ) => {
+    event.preventDefault(); // Prevent the default paste behavior
+    const pastedText = event.clipboardData.getData('text');
+    const cursorPosition = event.currentTarget.selectionStart || 0;
+    const currentValue = event.currentTarget.value;
+    const newValue = currentValue.slice(0, cursorPosition) + pastedText + currentValue.slice(cursorPosition);
+    setter(newValue);
+    onJobDetailsChange({
+      title,
+      skills,
+      description,
+      [event.currentTarget.name]: newValue,
+    });
+  };
+
   return (
     <div>
       <div className="">
@@ -32,24 +50,28 @@ function JobDescription({ onJobDetailsChange }: JobDescriptionProps) {
           <div className="w-[48%]">
             <Input.Wrapper label="Job Title" className="space-y-2">
               <Input
+                name="title"
                 placeholder="Enter the job title"
                 value={title}
                 onChange={(event) => {
                   setTitle(event.currentTarget.value);
                   handleInputChange();
                 }}
+                onPaste={(event) => handlePaste(event, setTitle)}
               />
             </Input.Wrapper>
           </div>
           <div className="w-[48%]">
             <Input.Wrapper label="Skills" className="space-y-2">
               <Input
+                name="skills"
                 placeholder="Enter the skills"
                 value={skills}
                 onChange={(event) => {
                   setSkills(event.currentTarget.value);
                   handleInputChange();
                 }}
+                onPaste={(event) => handlePaste(event, setSkills)}
               />
             </Input.Wrapper>
           </div>
@@ -57,6 +79,7 @@ function JobDescription({ onJobDetailsChange }: JobDescriptionProps) {
 
         <div className="mt-12 flex justify-center items-center">
           <Textarea
+            name="description"
             resize="vertical"
             label="Job Description"
             placeholder="Enter the job description"
@@ -66,6 +89,7 @@ function JobDescription({ onJobDetailsChange }: JobDescriptionProps) {
               setDescription(event.currentTarget.value);
               handleInputChange();
             }}
+            onPaste={(event) => handlePaste(event, setDescription)}
           />
         </div>
       </div>
