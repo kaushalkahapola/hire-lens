@@ -5,6 +5,7 @@ import { theme } from "../theme";
 import "./globals.css";
 import { HeaderMenu } from "./components/HeaderMenu/HeaderMenu";
 import { FooterSimple } from "./components/Footer/FooterSimple";
+import MobilePlaceholder from "./mobile/page";
 
 export const metadata = {
   title: "HireLens",
@@ -24,6 +25,7 @@ export default function RootLayout({ children }: { children: any }) {
       </head>
       <body>
         <MantineProvider theme={theme} defaultColorScheme="dark">
+          <MobilePlaceholder />
           <section>
             <HeaderMenu />
           </section>
